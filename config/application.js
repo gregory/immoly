@@ -2,6 +2,7 @@ module.exports.configure = function(options){
   var app = global.app,
     express = options.express,
     path    = require('path'),
+    rack    = require('asset-rack'),
     logger    = require(path.join(options.paths.lib, 'logger')),
     stylus  = require('stylus'),
     nib     = require('nib')
@@ -10,11 +11,10 @@ module.exports.configure = function(options){
   global.mongodb = {} //mongoose.connect('mongodb://localhost/project');
   global.logger  = logger
 
-  //require(path.join(options.paths.lib,'models.js')).autoload(options.paths.models, mongodb);
+  require(path.join(options.paths.lib,'models.js')).autoload(options.paths.models, mongodb);
   require(path.join(options.paths.lib,'controllers.js')).autoload(options.paths.controllers);
   require(path.join(options.paths.config,'routes.js')).draw(options.paths.lib, app);
 
-  //console.log(process.env.NODE_ENV)
   app.configure('development', function(){
     app.use(express.logger('dev'));
   })
@@ -25,27 +25,56 @@ module.exports.configure = function(options){
     res.status(500);
     res.render('error_template', {error: err});
   }
+
+  var assets = new rack.Rack([
+    //new rack.DynamicAssets({
+      //type: rack.SnocketsAsset,
+      //urlPrefix: '/public/scripts',
+      //dirname: __dirname + '/../app/assets/scripts',
+    //}),
+    new rack.DynamicAssets({
+      type: rack.StylusAsset,
+      urlPrefix: '/public/styles',
+      dirname: __dirname + '/../app/assets/styles',
+      options:{
+        config: function(stylus){
+          stylus.use(nib()).set('compress', false).import('nib')
+        },
+        watch: (__dirname + '/../app/assets/styles/')
+      }
+    }),
+
+    new rack.StaticAssets({
+      urlPrefix: '/public',
+      dirname: options.paths.public,
+      gzip: true
+    })
+
+  ]);
+
   app.configure(function(){
     app.set('port', process.env.PORT || 3000);
     app.set('views', options.paths.views);
     app.set('view engine', 'jade');
+    app.use(express.logger());
+    app.use(assets);
     app.use(express.bodyParser());
     app.use(app.router);
     app.use(errorHandler);
 
 
-    app.use('/public/vendor', express.static(path.join(options.paths.public, 'vendor'), {maxAge: 86400000}));
+    //app.use('/public/vendor', express.static(path.join(options.paths.public, 'vendor'), {maxAge: 86400000}));
 
-    app.use('/public/styles',stylus.middleware({
-      debug: true,
-      src: options.paths.assets + '/styles',
-      dest: options.paths.public + '/styles',
-      compile: function(str, path){
-        return stylus(str).set('filename', path).use(nib()).set('compress', false).import('nib');
-      }
-    }));
+    //app.use('/public/styles',stylus.middleware({
+      //debug: true,
+      //src: options.paths.assets + '/styles',
+      //dest: options.paths.public + '/styles',
+      //compile: function(str, path){
+        //return stylus(str).set('filename', path).use(nib()).set('compress', false).import('nib');
+      //}
+    //}));
 
-    app.use('/public', express.static(options.paths.public));
+    //app.use('/public', express.static(options.paths.public));
   });
 
   return app;

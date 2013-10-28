@@ -1,3 +1,4 @@
+require('./lib/newrelic');
 require('./lib/underscore');
 
 var express   = require('express'),
