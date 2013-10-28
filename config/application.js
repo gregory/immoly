@@ -19,10 +19,19 @@ module.exports.configure = function(options){
     app.use(express.logger('dev'));
   })
 
+  function errorHandler(err, req, res, next){
+    console.error(err.message);
+    console.error(err.stack);
+    res.status(500);
+    res.render('error_template', {error: err});
+  }
   app.configure(function(){
     app.set('port', process.env.PORT || 3000);
     app.set('views', options.paths.views);
     app.set('view engine', 'jade');
+    app.use(express.bodyParser());
+    app.use(app.router);
+    app.use(errorHandler);
 
 
     app.use('/public/vendor', express.static(path.join(options.paths.public, 'vendor'), {maxAge: 86400000}));
