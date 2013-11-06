@@ -2,6 +2,7 @@ module.exports.configure = function(options){
   var app = global.app,
     express = options.express,
     path    = require('path'),
+    rack    = require('asset-rack'),
     logger    = require(path.join(options.paths.lib, 'logger')),
     stylus  = require('stylus'),
     nib     = require('nib')
