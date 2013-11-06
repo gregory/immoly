@@ -9,6 +9,35 @@ html
     !=css("application")
 
   body
-    div.container
-    block content
+    div.container-fluid(data-ng-cloak='')
+      .row-fluid
+        nav.navbar.navbar-default(role='navigation')
+          div.navbar-header
+            button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collapse')
+              span.sr-only Toggle Navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a.navbar-brand(href='/') Immo.ly
+          div.collapse.navbar-collapse#navbar-collapse
+            ul.nav.navbar-nav
+              li
+                a(href='/') My List
+            ul.nav.navbar-nav.navbar-right
+              li.dropdown
+                a.dropdown-toggle(href='/', data-toggle='dropdown')
+                  My Account
+                  b.caret
+                ul.dropdown-menu
+                  li
+                    a(href='/#') Settings
+                  li.divider
+                  li
+                    a(href='/#') Disconect
+
+      section.row-fluid
+      section.row-fluid.properties
+      aside
+      section.map
+      block content
     script(src='/public/scripts/vendor/require/require.js', data-main="/js/home.js")
