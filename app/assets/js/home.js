@@ -1,12 +1,12 @@
 //define the require config
 require.config({
   paths: {
-    angular: '/public/vendor/angular.min',
-    domReady: '/public/vendor/require/domReady',
-    dummy: '/public/scripts/app',
-    bootstrap: '/public/scripts/bootstrap',
+    angular: './vendor/angular/angular.min',
+    domReady: '/public/scripts/vendor/require/domReady',
+    dummy: 'app',
+    bootstrap: 'bootstrap',
   },
-  baseUrl: 'public/scripts',
+  baseUrl: '/js/',
   priority: ['angular'],
   shims: {
     'angular': { exports: 'angular' },
