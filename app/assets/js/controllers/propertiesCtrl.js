@@ -26,6 +26,9 @@ define(['controllers/controllers'], function(controllers){
         {id: 2, src: 'http://placehold.it'},
         {id: 3, src: 'http://placehold.it'},
         {id: 4, src: 'http://placehold.it'},
+        {id: 5, src: 'http://placehold.it'},
+        {id: 6, src: 'http://placehold.it'},
+        {id: 7, src: 'http://placehold.it'},
       ]
     }
 
