@@ -15,11 +15,11 @@ block content
     .row-fluid.properties
       aside.listing.col-md-3
         ul.property-list
-          li.property-item(data-ng-repeat="property in properties | filter: filtering ")
+          li.property-item(data-ng-repeat="property in properties | filter: filtering ", data-ng-click="show_property($index)")
             img.property_img(src='http://placehold.it/100x100')
             ul.property_details
               li.property_name
-                a(href='#', data-ng-click="show_property($index)") {{property.name}}
+                a(href='#') {{property.name}}
               li.property_location
                 a(href='/'){{property.location}}
               li.property_beds Beds: {{property.bed}}
