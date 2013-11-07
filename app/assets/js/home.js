@@ -1,6 +1,5 @@
 //define the require config
-require.config({
-  paths: {
+requirePaths = {
     angular: '/public/js/vendor/angular/angular.min',
     domReady: '/public/js/vendor/require/domReady',
     app: 'app',
@@ -11,8 +10,16 @@ require.config({
     async: '/public/js/vendor/requirejs-plugins/src/async',
     'ui-bootstrap': '/public/js/vendor/ui-bootstrap/ui-bootstrap-0.6.0.min',
     'ui-bootstrap-tpls': '/public/js/vendor/ui-bootstrap/ui-bootstrap-tpls-0.6.0.min',
+}
 
-  },
+if(jsPaths){
+  for(key in jsPaths){
+    if(jsPaths[key].slice(0,4) == '/js/')
+      requirePaths[key] = jsPaths[key]
+  }
+}
+require.config({
+  paths: requirePaths,
   baseUrl: '/js/',
   priority: ['angular', 'jquery'],
   shims: {

@@ -37,5 +37,6 @@ html
                     a(href='/#') Disconect
 
       block content
-    script(src='/public/js/vendor/require/require.js', data-main="/js/home.js")
+    - mainJsPath = jsUrl("/js/home.js")
+    script(src='/public/js/vendor/require/require.js', data-main="#{mainJsPath}")
     block footer
