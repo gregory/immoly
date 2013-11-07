@@ -19,6 +19,16 @@ define(['controllers/controllers'], function(controllers){
       {id: 13, name: 'Super foo', img: '', price: 10, bed: '2-3', location: 'New York'}
     ];
 
+    $scope.active_property = {
+      name: "Northgate Family Residences",
+      slides: [
+        {id: 1, src: 'http://placehold.it'},
+        {id: 2, src: 'http://placehold.it'},
+        {id: 3, src: 'http://placehold.it'},
+        {id: 4, src: 'http://placehold.it'},
+      ]
+    }
+
     angular.extend($scope, {center: {latitude: 36.497582804367546, longitude: -120.548828125 }, markers: [], zoom: 8});
   }]);
 });

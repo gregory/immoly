@@ -7,8 +7,10 @@ require.config({
     bootstrap: 'bootstrap',
     tw_bootstrap: '/public/js/vendor/bootstrap/bootstrap.min',
     jquery: '/public/js/vendor/jquery/jquery-1.10.2.min',
-    angular_google_maps: '/public/js/vendor/angular-google-maps/angular-google-maps',
+    google_maps: '/public/js/vendor/angular-google-maps/angular-google-maps',
     async: '/public/js/vendor/requirejs-plugins/src/async',
+    'ui-bootstrap': '/public/js/vendor/ui-bootstrap/ui-bootstrap-0.6.0.min',
+    'ui-bootstrap-tpls': '/public/js/vendor/ui-bootstrap/ui-bootstrap-tpls-0.6.0.min',
 
   },
   baseUrl: '/js/',
@@ -16,18 +18,23 @@ require.config({
   shims: {
     'angular': { exports: 'angular' },
     'app': {
-      deps: ['angular', 'jquery', 'tw_bootstrap','async', 'angular_google_maps']
+      deps: ['angular', 'jquery', 'tw_bootstrap','async', 'google_maps']
      },
      'tw_bootstrap': {
       deps: ['jquery']
      },
      'jquery': {exports: 'jQuery'},
-     'angular_google_maps': {
+     'google_maps': {
         deps: ['angular', 'jquery'],
-        exports: 'google-maps'
      },
      'bootstrap': {
         deps: ['angular']
+     },
+     'ui-bootstrap': {
+        deps: ['angular']
+     },
+     'ui-bootstrap-tpls': {
+        deps: ['angular', 'ui-bootstrap']
      }
   }
 });
@@ -37,4 +44,5 @@ require(['bootstrap', 'jquery', 'app'], function(bootstrap, $, app){
   bootstrap([
     { dom: document.body, name: app['name']}
   ])
+  $('.carousel').carousel()
 })

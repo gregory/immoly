@@ -2,6 +2,7 @@ extends ../layouts/application
 
 block header
   !=css('properties/index')
+  != exportPaths('jsPaths')
 block content
   div(data-ng-controller='propertiesCtrl')
     section.row-fluid.filter-bar
@@ -13,8 +14,8 @@ block content
             button.btn.btn-default(type='submit') Submit
     .row-fluid.properties
       aside.listing.col-md-3
-        ul.block-list
-          li.property(data-ng-repeat="property in properties | filter: filtering ")
+        ul.property-list
+          li.property-item(data-ng-repeat="property in properties | filter: filtering ")
             img.property_img(src='http://placehold.it/100x100')
             ul.property_details
               li.property_name
@@ -25,3 +26,31 @@ block content
               li.property_price Price: ${{property.price}}
       section.map.col-md-9
         google-map(center='center', draggable='true', zoom='zoom', markers='markers', mark-click='true', style='height: 100%; width: 100%')
+    .row-fluid
+      .col-md-7.col-md-offset-3.wrapper
+        .property
+          .property_header
+            .page-header
+              h2.property_name {{active_property.name}}
+              div.pull-right
+                button.btn.btn-danger.btn-lg I want to visit
+          .property_details
+            .slides
+              .carousel.slide#carousel(data-ride="carousel")
+                .carousel-inner
+                  .item(data-ng-repeat="slide in active_property.slides", data-ng-class="{'active': $index==0}")
+                    img(data-ng-src="{{slide.src}}/580x300")
+                    .carousel-caption Slide: {{$index}}
+                a.left.carousel-control(href="#carousel", data-slide="prev")
+                  span.glyphicon.glyphicon-chevron-left
+                a.right.carousel-control(href="#carousel", data-slide="next")
+                  span.glyphicon.glyphicon-chevron-right
+                ol.pagination.thumbs
+                  li.thumb(data-ng-repeat="slide in active_property.slides", data-target="#carousel", data-slide-to="{{$index}}", data-ng-class="{'active': $index == 0}")
+                    img(data-ng-src="{{slide.src}}/75x75")
+
+              p
+                Living Room: Yes -- Dining Room: Area -- Kitchen: small gas Stove/r -- Deck: Roof -- Garden: No -- Fireplace: No -- Floors: W/w -- Window: Lev -- View: No -- Parking: south garage 2nd to left -- Washer/Dryer: In Bldg -- Pets: No --
+                Living Room: Yes -- Dining Room: Area -- Kitchen: small gas Stove/r -- Deck: Roof -- Garden: No -- Fireplace: No -- Floors: W/w -- Window: Lev -- View: No -- Parking: south garage 2nd to left -- Washer/Dryer: In Bldg -- Pets: No --
+            aside.contact
+              div 415-361-8279

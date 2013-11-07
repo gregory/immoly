@@ -1,13 +1,17 @@
 .filter-bar
   position: relative
-  z-index: 1
+  z-index: 10
   .navbar
     margin-bottom: 0
 
+.property_name
+  font-weight: bold
 .listing
   padding: 0
   margin: 0
   overflow: scroll
+  ul.property-list
+    padding-left: 0
   .property_img
     position: absolute
     top: 0
@@ -15,13 +19,13 @@
   .property_details
     margin-left: 100px
     padding-left: 1em
-  .property
+  .property-item
     min-height: 100px
     position: relative
     border: 1px solid #eee
   .property_name
-    font-weight: bold
     font-size: 1.2em
+  font-size: 1.2em
   .property_price
     display: inline
   .property_beds
@@ -39,7 +43,54 @@ google-map
   display: block
 
 .listing, .map
-  padding-top: 104px
+  margin-top: 104px
   position: absolute
-  height: 100%
+  height: auto
+  bottom: 0
   top: 0
+
+.property
+  background: #fff
+  position: relative
+  .property_name
+    margin-top: 0
+    display: inline-block
+    &+div
+      display: inline-block
+  .page-header
+    margin-top: 0
+  .property_header
+    margin-top: 0
+    position: relative
+    height: 73px
+    width: 100%
+  .property_details
+    overflow: scroll
+  .slides
+    position: relative
+    height: auto
+    bottom: 0
+    width: 70%
+  .carousel
+    background: black
+    ol.thumbs
+      margin: 5px 0 0 0
+    li.thumb
+      float: left
+      margin-left: 5px
+  p
+    height: 400px
+
+  .contact
+    position: absolute
+    padding: 0 1em
+    right: 0
+    top: 0
+    width: 30%
+    height: auto
+    margin-top: 73px
+    bottom: 0
+    background: rgba(0, 0, 0, .1)
+
+
+
