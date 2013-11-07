@@ -9,7 +9,16 @@ define(['controllers/controllers'], function(controllers){
       {id: 5, name: 'Foo2', img: '', price: 1900, bed: '2-3', location: 'New York'},
       {id: 6, name: 'Foo2', img: '', price: 10, bed: '2-3', location: 'New York'},
       {id: 7, name: 'Foo1', img: '', price: 10, bed: '2-3', location: 'San francisco'},
-      {id: 3, name: 'Foo2', img: '', price: 10, bed: '2-3', location: 'New York'}
+      {id: 8, name: 'Foo2', img: '', price: 10, bed: '2-3', location: 'New York'},
+      {id: 9, name: 'Lake View Towers', img: '', price: 2010, bed: '2-3', location: 'San francisco'},
+      {id: 10, name: 'Merritt on 3rd', img: '', price: 2200, bed: '2-3', location: 'New York'},
+      {id: 14, name: 'Northgate Family Residences', img: '', price: 10, bed: '2-3', location: 'San francisco'},
+      {id: 15, name: 'Foo2', img: '', price: 1900, bed: '2-3', location: 'New York'},
+      {id: 16, name: 'Foo2', img: '', price: 10, bed: '2-3', location: 'New York'},
+      {id: 17, name: 'Foo1', img: '', price: 10, bed: '2-3', location: 'San francisco'},
+      {id: 13, name: 'Super foo', img: '', price: 10, bed: '2-3', location: 'New York'}
     ];
+
+    angular.extend($scope, {center: {latitude: 36.497582804367546, longitude: -120.548828125 }, markers: [], zoom: 8});
   }]);
 });

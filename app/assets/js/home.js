@@ -8,21 +8,26 @@ require.config({
     tw_bootstrap: '/public/js/vendor/bootstrap/bootstrap.min',
     jquery: '/public/js/vendor/jquery/jquery-1.10.2.min',
     angular_google_maps: '/public/js/vendor/angular-google-maps/angular-google-maps',
-    google_map: 'http://maps.googleapis.com/maps/api/js?sensor=false&language=en'
+    async: '/public/js/vendor/requirejs-plugins/src/async',
+
   },
   baseUrl: '/js/',
   priority: ['angular', 'jquery'],
   shims: {
     'angular': { exports: 'angular' },
     'app': {
-      deps: ['angular', 'tw_bootstrap']
+      deps: ['angular', 'jquery', 'tw_bootstrap', 'angular_google_maps', 'async']
      },
      'tw_bootstrap': {
       deps: ['jquery']
      },
      'jquery': {exports: 'jQuery'},
      'angular_google_maps': {
-        deps: ['google_map']
+        deps: ['angular', 'jquery'],
+        exports: 'google-maps'
+     },
+     'bootstrap': {
+        deps: ['angular']
      }
   }
 });

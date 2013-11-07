@@ -1,4 +1,4 @@
-define(['domReady', 'jquery', 'tw_bootstrap', 'angular'], function(domReady, jquery, tw_bootstrap){
+define(['domReady', 'angular'], function(domReady){
   'use strict';
 
   return function(apps_o){
