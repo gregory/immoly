@@ -19,7 +19,7 @@ block content
             img.property_img(src='http://placehold.it/100x100')
             ul.property_details
               li.property_name
-                a(href='/') {{property.name}}
+                a(href='#', data-ng-click="show_property($index)") {{property.name}}
               li.property_location
                 a(href='/'){{property.location}}
               li.property_beds Beds: {{property.bed}}
@@ -27,7 +27,7 @@ block content
       section.map.col-md-9
         google-map(center='center', draggable='true', zoom='zoom', markers='markers', mark-click='true', style='height: 100%; width: 100%')
     .row-fluid
-      .col-md-7.col-md-offset-3.wrapper
+      .col-md-7.col-md-offset-3.wrapper(data-ng-class="{'slide_in': active_property.active}")
         .property
           .property_header
             .page-header

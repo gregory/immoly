@@ -19,7 +19,11 @@ define(['controllers/controllers'], function(controllers){
       {id: 13, name: 'Super foo', img: '', price: 10, bed: '2-3', location: 'New York'}
     ];
 
+    $scope.show_property=function(index){
+      $scope.active_property.active = !$scope.active_property.active;
+    };
     $scope.active_property = {
+      active: false,
       name: "Northgate Family Residences",
       slides: [
         {id: 1, src: 'http://placehold.it'},
