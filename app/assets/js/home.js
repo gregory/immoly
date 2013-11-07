@@ -16,7 +16,7 @@ require.config({
   shims: {
     'angular': { exports: 'angular' },
     'app': {
-      deps: ['angular', 'jquery', 'tw_bootstrap', 'angular_google_maps', 'async']
+      deps: ['angular', 'jquery', 'tw_bootstrap','async', 'angular_google_maps']
      },
      'tw_bootstrap': {
       deps: ['jquery']
