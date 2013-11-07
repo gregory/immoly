@@ -5,12 +5,13 @@ html
 
     meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
     meta(charset='utf-8')
-    !=css("vendor/bootstrap/bootstrap.min")
+    link(rel='stylesheet', href="/public/css/vendor/bootstrap/bootstrap.min.css")
     !=css("application")
+    block header
 
   body
     div.container-fluid(data-ng-cloak='')
-      .row-fluid
+      .row-fluid.top-bar
         nav.navbar.navbar-default(role='navigation')
           div.navbar-header
             button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collapse')
@@ -35,9 +36,6 @@ html
                   li
                     a(href='/#') Disconect
 
-      section.row-fluid
-      section.row-fluid.properties
-      aside
-      section.map
       block content
-    script(src='/public/scripts/vendor/require/require.js', data-main="/js/home.js")
+    script(src='/public/js/vendor/require/require.js', data-main="/js/home.js")
+    block footer

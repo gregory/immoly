@@ -1,5 +1,26 @@
 extends ../layouts/application
 
+block header
+  !=css('properties/index')
 block content
-  div(data-ng-controller='dummyCtrl')
-    {{foo}}
+  .properties(data-ng-controller='propertiesCtrl')
+    section.row-fluid.filter-bar
+      .row-fluid
+        ul.nav.navbar.navbar-default
+          form.navbar-form.navbar-left(role='search')
+            .form-group
+              input.form-control(placeholder='San Francisco', data-ng-model="filtering.location")
+            button.btn.btn-default(type='submit') Submit
+    .row-fluid
+      aside.listing.col-md-3
+        ul.block-list
+          li.property(data-ng-repeat="property in properties | filter: filtering ")
+            img.property_img(src='http://placehold.it/100x100')
+            ul.property_details
+              li.property_name
+                a(href='/') {{property.name}}
+              li.property_location
+                a(href='/'){{property.location}}
+              li.property_beds Beds: {{property.bed}}
+              li.property_price Price: ${{property.price}}
+      section.map.col-md-9
