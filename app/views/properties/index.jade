@@ -3,7 +3,7 @@ extends ../layouts/application
 block header
   !=css('properties/index')
 block content
-  .properties(data-ng-controller='propertiesCtrl')
+  div(data-ng-controller='propertiesCtrl')
     section.row-fluid.filter-bar
       .row-fluid
         ul.nav.navbar.navbar-default
@@ -11,7 +11,7 @@ block content
             .form-group
               input.form-control(placeholder='San Francisco', data-ng-model="filtering.location")
             button.btn.btn-default(type='submit') Submit
-    .row-fluid
+    .row-fluid.properties
       aside.listing.col-md-3
         ul.block-list
           li.property(data-ng-repeat="property in properties | filter: filtering ")
@@ -24,4 +24,4 @@ block content
               li.property_beds Beds: {{property.bed}}
               li.property_price Price: ${{property.price}}
       section.map.col-md-9
-        google-map(center='center', draggable='true', zoom='zoom', markers='markers', mark-click='true', style='height: 600px;')
+        google-map(center='center', draggable='true', zoom='zoom', markers='markers', mark-click='true', style='height: 100%; width: 100%')
