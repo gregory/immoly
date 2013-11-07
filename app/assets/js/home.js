@@ -32,7 +32,7 @@ require.config({
   }
 });
 
-require(['bootstrap', 'app'], function(bootstrap, app){
+require(['bootstrap', 'jquery', 'app'], function(bootstrap, $, app){
   'use strict';
   bootstrap([
     { dom: document.body, name: app['name']}
