@@ -22,6 +22,12 @@
     margin-left: 100px
     padding-left: 1em
   .property-item
+    z-index: 10
+    &:hover
+      z-index: 15
+      height: 200px
+      -webkit-transform: scale(1.05, 1)
+      background: rgba(0, 0, 0, .1)
     min-height: 100px
     position: relative
     border: 1px solid #eee
@@ -95,6 +101,4 @@ google-map
     margin-top: 73px
     bottom: 0
     background: rgba(0, 0, 0, .1)
-
-
 
