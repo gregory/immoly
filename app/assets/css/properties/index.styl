@@ -7,6 +7,11 @@
 .property_name
   font-weight: bold
 .listing
+  .property_floorplans
+    margin-left: 100px
+    padding-left: 0
+    & ul
+      padding-left: 1em
   z-index: 20
   padding: 0
   margin: 0
@@ -29,6 +34,8 @@
       -webkit-transform: scale(1.05, 1)
       background: rgba(0, 0, 0, .1)
     min-height: 100px
+    height: 100px
+    overflow: hidden
     position: relative
     border: 1px solid #eee
     display: block
@@ -62,6 +69,8 @@ google-map
   background: #fff
   position: relative
   z-index: 10
+  padding: 0 1em
+  padding-right: 0
   .property_name
     margin-top: 0
     display: inline-block
@@ -71,6 +80,7 @@ google-map
     margin-top: 0
   .property_header
     margin-top: 0
+    padding: 1em 0
     position: relative
     height: 73px
     width: 100%

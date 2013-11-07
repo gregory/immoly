@@ -22,8 +22,12 @@ block content
                 a(href='#') {{property.name}}
               li.property_location
                 a(href='/'){{property.location}}
-              li.property_beds Beds: {{property.bed}}
-              li.property_price Price: ${{property.price}}
+            ul.property_floorplans
+              li(data-ng-repeat="floor_plan in property.floorplans")
+                ul
+                  li.property_beds Beds: {{property.bed}}
+                  li.property_price Price: ${{property.price}}
+                  li.property_description {{property.description}}
       section.map.col-md-9
         google-map(center='center', draggable='true', zoom='zoom', markers='markers', mark-click='true', style='height: 100%; width: 100%')
     .row-fluid
@@ -33,13 +37,13 @@ block content
             .page-header
               h2.property_name {{active_property.name}}
               div.pull-right
-                button.btn.btn-danger.btn-lg I want to visit
+                button.btn.btn-danger.btn-lg Get more info
           .property_details
             .slides
               .carousel.slide#carousel(data-ride="carousel")
                 .carousel-inner
                   .item(data-ng-repeat="slide in active_property.slides", data-ng-class="{'active': $index==0}")
-                    img(data-ng-src="{{slide.src}}/580x300")
+                    img(data-ng-src="{{slide.src}}")
                     .carousel-caption Slide: {{$index}}
                 a.left.carousel-control(href="#carousel", data-slide="prev")
                   span.glyphicon.glyphicon-chevron-left
@@ -47,10 +51,8 @@ block content
                   span.glyphicon.glyphicon-chevron-right
                 ol.pagination.thumbs
                   li.thumb(data-ng-repeat="slide in active_property.slides", data-target="#carousel", data-slide-to="{{$index}}", data-ng-class="{'active': $index == 0}")
-                    img(data-ng-src="{{slide.src}}/75x75")
+                    img(data-ng-src="{{slide.src}}", width="75", height="75")
 
-              p
-                Living Room: Yes -- Dining Room: Area -- Kitchen: small gas Stove/r -- Deck: Roof -- Garden: No -- Fireplace: No -- Floors: W/w -- Window: Lev -- View: No -- Parking: south garage 2nd to left -- Washer/Dryer: In Bldg -- Pets: No --
-                Living Room: Yes -- Dining Room: Area -- Kitchen: small gas Stove/r -- Deck: Roof -- Garden: No -- Fireplace: No -- Floors: W/w -- Window: Lev -- View: No -- Parking: south garage 2nd to left -- Washer/Dryer: In Bldg -- Pets: No --
+              p {{active_property.description}}
             aside.contact
               div 415-361-8279
